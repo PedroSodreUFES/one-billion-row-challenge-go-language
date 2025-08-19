@@ -7,6 +7,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type Measurement struct {
@@ -26,6 +27,7 @@ func main() {
 	dados := make(map[string]Measurement)
 
 	/* Scanear */
+	start := time.Now()
 	scanner := bufio.NewScanner(measurements)
 	for scanner.Scan() {
 		rawData := scanner.Text()
@@ -76,5 +78,6 @@ func main() {
 			fmt.Printf(", ")
 		}
 	}
-	fmt.Printf("}")
+	fmt.Printf("}\n")
+	fmt.Println(time.Since(start))
 }
